@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{%load static %}
+
+{%block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>MS market</title>
+    <!-- Favicon  -->
+    <link rel="icon" href="{%static 'img/core-img/favicon.ico'%}">
+</head>
+
+<body>
+    
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div style="padding: 20px;">
+        <div class="main-content-wrapper d-flex clearfix">
+            <!-- Mobile Nav (max width 767px)-->
+            <div class="mobile-nav">
+                <!-- Navbar Brand -->
+                <div class="amado-navbar-brand">
+                    <a href="index.html"><img src="{%static 'img/core-img/logo.png'%}" alt=""></a>
+                </div>
+                <!-- Navbar Toggler -->
+                <div class="amado-navbar-toggler">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+    
+            <!-- العمود الجانبي  -->
+            <header class="header-area clearfix">
+                <!-- Close Icon -->
+                <div class="nav-close">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                </div>
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="../"><img src="{%static 'img/core-img/MS logo.png'%}" alt=""></a>
+                </div>
+                <!-- Amado Nav -->
+                <nav class="amado-nav">
+                    <ul>
+                        <li class="active"><a href="../">Home</a></li>
+                        {%for i in cat %}
+                        <li class="active"><a href="{{i.name}}">{{i.name}}</a></li>
+                        {%endfor%}
+                    </ul>
+                </nav>
+                <br><br><br>
+                <!-- Social Button -->
+                <div class="social-info d-flex justify-content-between">
+                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                </div>
+            </header>
+            <!-- العمود الجانبي -->
+        
+            <!-- المحتوي الرئيسي -->
+            <div class="products-catagories-area clearfix">
+                <div class="amado-pro-catagory clearfix">
+                    <!-- Single Catagory -->
+                    {%for item in col%}
+                    <div class="single-products-catagory clearfix">
+                        <a href="{% url 'cloproduct' item.id %}">
+                            <img src="{{item.image.url}}" alt="{{item.name}}">
+                            <div style="width: 80px;
+                            height: 3px;
+                            background-color: #fbb710;
+                            display: block;
+                            margin-bottom: 15px;
+                            margin:5px; "></div>
+                                <h4 style="padding:5px;margin:5px;">{{item.name}}</h4>
+                                <p style="padding:5px;margin:5px;">{{item.price}} EGP</p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- المحتوي الرئيسي -->
+        </div>
+    </div>
+    
+    <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js'%}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <!-- Plugins js -->
+    <script src="{%static 'js/plugins.js'%}"></script>
+    <!-- Active js -->
+    <script src="{%static 'js/active.js'%}"></script>
+
+</body>
+
+</html>
+
+{%endblock content %}

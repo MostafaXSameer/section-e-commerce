@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{%load static %}
+
+{%block content %}
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div style="padding: 20px;">
+        <div class="main-content-wrapper d-flex clearfix">
+            <!-- Mobile Nav (max width 767px)-->
+            <div class="mobile-nav">
+                <!-- Navbar Brand -->
+                <div class="amado-navbar-brand">
+                    <a href="index.html"><img src="{%static 'img/core-img/logo.png'%}" alt=""></a>
+                </div>
+                <!-- Navbar Toggler -->
+                <div class="amado-navbar-toggler">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>    
+            <!-- العمود الجانبي  -->
+            <header class="header-area clearfix">
+                <!-- Close Icon -->
+                <div class="nav-close">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                </div>
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="../../"><img src="{%static 'img/core-img/MS logo.png'%}" alt=""></a>
+                </div>
+                <!-- Amado Nav -->
+                <nav class="amado-nav">
+                    <ul>
+                        <li class="active"><a href="../../">Home</a></li>
+                        {%for i in cat %}
+                        <li class="active"><a href="../../{{i.name}}">{{i.name}}</a></li>
+                        {%endfor%}
+                    </ul>
+                </nav>
+                <br><br><br>
+                <!-- Social Button -->
+                <div class="social-info d-flex justify-content-between">
+                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                </div>
+            </header>
+            <!-- العمود الجانبي -->
+        <!-- Product Details Area Start -->
+        <div class="single-product-area section-padding-100 clearfix">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mt-50">
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-7">
+                        <div class="single_product_thumb">
+                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">                                
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        
+                                            <img class="d-block w-100" src="{{pro.image.url}}" alt="First slide">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5">
+                        <div class="single_product_desc">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price">{{pro.price}}</p>
+                                <a href="">
+                                    <h6>{{pro.name}}</h6>
+                                </a>      
+                                <!-- Ratings & Review -->
+                                <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+                                    <div class="ratings">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+
+                                    <div class="review">
+                                        <a href="#">Write A Review</a>
+                                    </div>
+                                </div>
+                                <!-- Avaiable -->
+                                {%if pro.active%}
+                                <p class="avaibility"><i class="fa fa-circle"></i> In Stock</p>
+                                {% else %}
+                                <p class="avaibility"><i class="fa fa-circle"></i> out of Stock</p>
+                                {%endif%}
+                            </div>
+
+                            <div class="short_overview my-5">
+                                <p>{{pro.desc}}</p>
+                            </div>
+                            <!-- Add to Cart Form -->
+                            <form class="cart clearfix" method="get">
+                                <div class="cart-btn d-flex mb-50">
+                                    <p>Qty</p>
+                                    <div class="quantity">
+                                        
+                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
+                                        
+                                    </div>
+                                </div>
+                                <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product Details Area End -->
+    </div>
+</div>
+    <!-- ##### Main Content Wrapper End ##### -->
+
+
+    <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="js/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+
+{%endblock content %}
