@@ -32,12 +32,20 @@
                     <ul>
                         <li class="active"><a href="../../">Home</a></li>
                         {%for i in cat %}
-                        <li class="active"><a href="../../{{i.name}}">{{i.name}}</a></li>
+                        <li class="active"><a href="../..{% url 'category' i.id %}">{{i.name}}</a></li>
                         {%endfor%}
+                        <li class="active"  >{% with total_items=cart|length %}
+                            {% if cart|length > 0 %}
+                            <a href="{% url 'cart:cart_detail'%}" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>({{total_items}})</span></a>
+                            {% else %}
+                                Your cart is empty
+                            {% endif %}
+                            {% endwith %}
+                        </li>
                     </ul>
                 </nav>
-                <br><br><br>
-                <!-- Social Button -->
+                <div class="cart-fav-search mb-100">
+                </div>                <!-- Social Button -->
                 <div class="social-info d-flex justify-content-between">
                     <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -46,6 +54,7 @@
                 </div>
             </header>
             <!-- العمود الجانبي -->
+            
         <!-- Product Details Area Start -->
         <div class="single-product-area section-padding-100 clearfix">
             <div class="container-fluid">
@@ -107,17 +116,22 @@
                                 <p>{{pro.desc}}</p>
                             </div>
                             <!-- Add to Cart Form -->
-                            <form class="cart clearfix" method="get">
+                            <form class="cart clearfix" method="post" action="{% url 'cart:cart_add' pro.id %}" >
                                 <div class="cart-btn d-flex mb-50">
-                                    <p>Qty</p>
                                     <div class="quantity">
-                                        
-                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
-                                        
+                                        {% csrf_token %}
                                     </div>
                                 </div>
+                                {{cart_product_form}}
+                                <br><br>
                                 <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
                             </form>
+                            
+
+
+
+
+
                         </div>
                     </div>
                 </div>
